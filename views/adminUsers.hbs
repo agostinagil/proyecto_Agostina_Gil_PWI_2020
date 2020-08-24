@@ -1,0 +1,149 @@
+<!--boton-->
+<div class="container imp">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg p-b-10">
+			<a href="/admin/index" class="stext-109 cl8 hov-cl1 trans-04">
+				Administrador
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+				Usuarios
+			</span>
+		</div>
+</div>
+
+<!-- Panel usuarios-->
+<div class="bg0 p-t-10 p-b-85">
+		<div class="container m-lr-0">
+			<div class="row">
+				<div class="col-lg-12  m-b-50">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<div class="wrap-table-shopping-cart">
+							<table class="table-shopping-cart">
+								<thead>
+								    <tr class="table_head" style="background-color: rgba(214, 124, 108, 0.596);">
+								    	<th class="column-3 tab">Usuario</th>
+								    	<th class="column-3 tab">Nombre</th>
+                                        <th class="column-3 tab">Apellido</th>
+								    	<th class="column-3 tab">Correo</th>
+								    	<th class="column-3 tab">Password</th>
+                                        <th class="column-3 tab">Admin</th>
+                                        <th class="column-3 tab">Estado</th>
+								    	<th class="column-3 tab">Ajustes</th>
+                                      
+								    </tr>
+								</thead>
+                                <tbody>
+									{{#each usuarios}}
+								    <tr class="table_row co3">
+								    	<td class="column-3 rotbl tab">{{usuario}}</td>
+								    	<td class="column-3 rotbl tab ">{{nombre}}</td>
+                                        <td class="column-3 rotbl tab ">{{apellido}}</td>
+								    	<td class="column-3 rotbl tab">{{correo}}</td>
+								    	<td class="column-3 rotbl tab">********</td>
+                                        <td class="column-3 rotbl tab">
+											{{#if admin}}
+											<span style="color: rgb(52, 170, 164);">Permisos</span>
+											{{else}}
+											<span style="color: rgb(200, 87, 72);">Sin permisos</span>
+											{{/if}}
+										</td>
+                                        <td class="column-3 rotbl tab">
+											{{#if estado}}
+											<span style="color: rgb(52, 170, 164);">Habilitado</span>
+											{{else}}
+											<span style="color: rgb(200, 87, 72);">Deshabilitado</span>
+											{{/if}}
+											
+										</td>
+										<td class="column-3 rotbl tab">
+											{{#if admin}}
+											<i class="fas fa-cogs p-r-10" onclick="habAdmin(0,{{id}})" style="color: rgb(209, 102, 92); cursor:pointer"><span class="sp"> Baja admin</span></i>
+											{{else}}
+											<i class="fas fa-cogs p-r-10" onclick="habAdmin(1,{{id}})" style="color: rgb(4, 177, 177); cursor:pointer"><span class="sp"> Alta admin</span></i>
+											{{/if}}
+
+											{{#if estado}}
+
+										    <i class="fas fa-times" onclick="habi(0,{{id}})" style="color: rgb(209, 102, 92); cursor: pointer"><span class="sp"> Deshabilitar usuario</span></i>
+											{{else}}
+											<i class="fas fa-check " onclick="habi(1,{{id}})" style="color: rgb(4, 177, 177); cursor:pointer"><span class="sp">  Habilitar usuario</span></i>
+											{{/if}}
+										</td>
+								    </tr>
+									{{/each}}
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+</div>
+
+<!--SCRIPTS-->
+<script>
+	//Cambiar estado de usuario
+	const habi = (estado, id) =>{
+		console.log(`estado`, estado);
+		console.log(`id`, id);
+		fetch(`/admin/usuarios/${id}/${estado}`,{
+			method: 'put',
+			body: { estado: estado },
+		})
+		.then((response) => response.json())
+		.then(data => message(data))
+		
+	}
+	const message = (dato) =>{
+		if(dato.status){
+			Swal.fire({
+                
+                icon: 'success',
+                title: 'Estado actualizado',
+                showConfirmButton: true,
+            })              
+		}else{
+			Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href>Why do I have this issue?</a>'
+            })
+		}
+	}
+	//Alta-Baja de amin
+	const habAdmin = (admin, id) =>{
+		console.log(`admin`, admin);
+		console.log(`id`, id);
+		fetch(`/admin/usuarios/${id}/${admin}`,{
+			method: 'put',
+			body: { admin: admin },
+		})
+		.then((response) => response.json())
+		.then(data => message2(data))
+		
+	}
+	const message2 = (dato) =>{
+		if(dato.status==1){
+			Swal.fire({
+                
+                icon: 'success',
+                title: `Has cambiado el campo "ADMIN" del usuario`,
+                showConfirmButton: true,
+            })              
+		
+		}else{
+			Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Algo estuvo mal!',
+                footer: '<a href>¿Por qué tengo este error?</a>'
+            })
+		}
+	}
+
+
+</script>	

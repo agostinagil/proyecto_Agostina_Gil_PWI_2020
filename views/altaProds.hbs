@@ -1,0 +1,62 @@
+<div class="container imp">
+	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+		<a href="/admin/index" class="stext-109 cl8 hov-cl1 trans-04">
+			Administrador
+			<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a>
+        <a href="/admin/productos" class="stext-109 cl8 hov-cl1 trans-04">
+			Productos
+			<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a>
+
+        <span class="stext-109 cl4">
+			Alta de producto
+		</span>
+    </div>
+</div>
+<h5 class="mtext-105 cl2 txt-center p-b-30 m-t-30" style="color: rgb(32, 156, 156);">
+	{{message}}
+</h5>
+<section class="bg0 p-t-50 p-b-116">
+		<div class="container">
+			<div class="flex-w flex-tr justify-content-center">
+				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+					<form method="POST" action="/admin/productos/alta" enctype="multipart/form-data">
+						<h4 class="mtext-105 cl2 txt-center p-b-30">
+							Nuevo producto
+						</h4>
+
+						<div class="bor8 m-b-20 how-pos4-parent">
+							<input class="stext-111 cl2 plh3 size-116 p-l-20 p-r-30" type="text" name="nombre" placeholder="Nombre">
+						</div>
+                        <div class="bor8 m-b-20 how-pos4-parent">
+							<input class="stext-111 cl2 plh3 size-116 p-l-20 p-r-30" type="text" name="descripcion" placeholder="Descripción">
+						</div>
+                        <div class="bor8 m-b-20 how-pos4-parent">
+							<input class="stext-111 cl2 plh3 size-116 p-l-20 p-r-30" type="number" name="precio" placeholder="Precio">
+						</div>
+                        <div class="bor8 m-b-20 how-pos4-parent">
+							<input class="stext-111 cl2 plh3 size-116 p-l-20 p-r-30" type="number" min="0" max="100" name="descuento" placeholder="Descuento">
+						</div>
+                        <div class="bor8 m-b-20 how-pos4-parent">
+							<input class="stext-111 cl2 plh3 size-116 p-t-10 p-l-20 p-r-30" type="file" name="foto" style="color: teal;">
+						</div>
+                        
+						<select class="form-group stext-111 cl2 plh3 size-116  p-l-20 p-r-30" name="id_categoria">
+                            <option value="0" selected disabled> Seleccioná una categoría</option>
+                            {{#each categorias}}
+                            <option value="{{id}}">{{nombre}}</option>
+                            {{/each}}
+                        </select>
+						
+                        
+						<button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+							Dar de alta
+						</button>
+                        
+					</form>
+				</div>
+
+			</div>
+		</div>
+</section>	

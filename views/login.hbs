@@ -1,0 +1,43 @@
+<!--Login-->
+<h5 class="mtext-105 cl2 txt-center p-tb-30 " style="color: rgb(32, 156, 156);">
+	Iniciá sesión para poder realizar tu compra! 
+</h5>
+<h5 class="mtext-105 cl2 txt-center p-b-30 " style="color: rgb(197, 101, 77);">
+	{{message}}
+</h5>
+<section class="bg0 p-b-50  " id="login">
+		<div class="container">
+			<div class="flex-w flex-tr justify-content-center ">
+				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+					<form method="POST" action="/login"> 
+						<h5 class="mtext-105 cl2 txt-center p-b-30">
+							Ingresá a tu cuenta!
+						</h5>
+
+						<div class="bor8 m-b-20 how-pos4-parent">
+							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="usuario" required placeholder="Usuario">
+							<img class="how-pos4 pointer-none" src="images/icons/icon-email.png" alt="ICON">
+						</div>
+
+						<div class="bor8 m-b-20 how-pos4-parent">
+							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="pass" required placeholder="Contraseña">
+							<span class="lnr lnr-lock how-pos4 pointer-none"></span>
+						</div>
+
+						<button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer m-t-40">
+							Iniciar sesión
+						</button>
+						
+						<div class="size-212 p-t-2 m-t-30">
+							<h6 class="mtext-110 cl2 m-b-20">
+								¿Todavía no tenes una?
+							</h6>
+							<a href="/registro" class="stext-115 cl1 size-213 p-t-18">Registrate!</a>
+
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+</section>	

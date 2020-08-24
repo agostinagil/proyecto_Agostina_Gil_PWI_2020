@@ -1,0 +1,84 @@
+	<div class="container imp">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="/admin/index" class="stext-109 cl8 hov-cl1 trans-04">
+				Administrador
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+				Productos
+			</span>
+		</div>
+	</div>
+	<!--boton-->
+	<div class="col-4 m-t-30 m-b-30 m-l-50">
+		<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 m-t-10 p-lr-15 trans-04 js-addcart-detail"><a href="/admin/productos/alta" style="color: whitesmoke;"> Nuevo producto</a> 
+		</button>
+	</div>
+
+	<div>
+		<span class="stext-109 cl4 m-l-50 p-t-30">
+			* Si el campo "ESTADO" se encuentra en "0" y querés que vuelva a estar disponible para el público, sólo tienes que presionar nuevamente el tachito.
+		</span>
+	</div>
+	<h5 class="mtext-105 cl2 txt-center p-b-30 m-t-10" style="color: rgb(32, 156, 156);">
+	{{message}}
+    </h5>
+
+	<!-- Panel productos -->
+	<div class="bg0 p-b-85">
+		<div class="container m-lr-0">
+			<div class="row">
+				<div class="col-lg-12  m-b-50">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<div class="wrap-table-shopping-cart">
+							<table class="table-shopping-cart">
+								<thead>
+								    <tr class="table_head" style="background-color: rgba(214, 124, 108, 0.596);">
+								    	<th class="column-1 tab">Imagen</th>
+								    	<th class="column-3 tab">Nombre</th>
+                                        <th class="column-3 tab">Descripción</th>
+								    	<th class="column-3 tab">Precio</th>
+								    	<th class="column-3 tab">Descuento</th>
+                                        <th class="column-3 tab">Categoría</th>
+                                        <th class="column-3 tab">Estado</th>
+								    	<th class="column-3 tab">Ajustes</th>
+                                      
+								    </tr>
+								</thead>
+                                <tbody>
+									{{#each productos}}
+								    <tr class="table_row">
+								    	<td class="column-1 tab">
+								    		<div class="how-itemcart1">
+								    			<img src="/images/{{imagen}}" alt="IMG">
+								    		</div>
+								    	</td>
+								    	<td class="column-3 tab">{{nombre}}</td>
+								    	<td class="column-3 tab p-t-20">{{descripcion}}</td>
+								    	<td class="column-3 tab">{{precio}}</td>
+								    	<td class="column-3 tab">{{descuento}}</td>
+                                        <td class="column-3 tab">{{nombreCategoria}}</td>
+                                        <td class="column-3 tab">
+											{{#if estado}}
+											<span style="color: rgb(52, 170, 164);">Habilitado</span>
+											{{else}}
+											<span style="color: rgb(200, 87, 72);">Deshabilitado</span>
+											{{/if}}
+										</td>
+										<td class="column-3 tab">
+											<a href="/admin/productos/modificar/{{id}}"><i class="fas fa-cogs p-r-10" style="color: rgb(4, 177, 177); cursor:pointer"></i></a>
+										    <a href="/admin/productos/baja/{{id}}/{{estado}}"><i class="fas fa-trash" style="color: rgb(209, 102, 92); cursor: pointer"></i></a>
+										</td>
+								    </tr>
+									{{/each}}
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>

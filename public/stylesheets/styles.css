@@ -1,0 +1,81 @@
+.nave{
+    background-color: rgba(248, 239, 234, 0.842) !important;
+    flex-wrap: nowrap !important;
+    max-width: 100%;
+}
+.contnav{
+    flex-wrap: nowrap !important;
+    top: 0rem;
+}
+.color{
+    color: rgb(21, 78, 80); 
+    background-color: rgba(233, 217, 217, 0.555) !important;
+    border-radius: 1rem !important;
+    padding: 0.20em 0.25em 0.25em 0.25em;
+}
+a:hover{
+    color: rgba(92, 213, 218, 0.842);
+}
+.tab{
+    text-align: center;
+    
+}
+.imp{
+    margin-top: 5em!important;
+}
+.sp{
+    font-family: Poppins-Regular;
+    font-size: 12px;
+}
+.co3{
+    height: 90px !important;
+}
+.rotbl{
+    padding-top: 1em;
+}
+.wlcm{
+    font-size: 30px;
+    color: rgb(20, 121, 116);
+}
+.boxadmin{
+    width: 60% !important;
+}
+.refbtn{
+    color: whitesmoke;
+}
+.refbtn:hover{
+    color:whitesmoke;
+}
+.lab{
+    font-size: 17px;
+    color: rgb(192, 122, 110);
+}
+.gridd{
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.gridd img{
+    width: 100%;
+}
+.prodimg img{
+    width: 266px;
+    height:329px;
+    
+
+}
+.brand{
+    font-family: Poppins-Regular;
+}
+
+.fot{
+    font-family: Poppins-Regular; 
+    color: whitesmoke;
+}
+
+
+
+  

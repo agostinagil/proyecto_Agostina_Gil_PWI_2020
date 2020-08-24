@@ -1,0 +1,116 @@
+	<div class="container imp">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="/admin/index" class="stext-109 cl8 hov-cl1 trans-04">
+				Administrador
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+				Categorias
+			</span>
+		</div>
+	</div>
+	<!--boton-->
+	<div class="col-4 m-t-30 m-b-30 m-l-50">
+		<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 m-t-10 p-lr-15 trans-04 js-addcart-detail"><a href="/admin/categorias/alta" style="color: whitesmoke;"> Nueva categoría</a> 
+		</button>
+	</div>
+
+	<div>
+		<span class="stext-109 cl4 m-l-50 p-t-30">
+			* Si el campo "ESTADO" se encuentra en "HABILITADA" significa que se encuentra disponible para el público. Si se encuentra en "DESHABILITADA" significa lo contrario.
+		</span>
+	</div>
+
+	<!-- Panel productos -->
+	<div class="bg0 p-b-85 p-t-20">
+		<div class="container m-lr-0">
+			<div class="row ">
+				<div class="col-lg-12  m-b-50">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<div class="wrap-table-shopping-cart">
+							<table class="table-shopping-cart ">
+								<thead>
+								    <tr class="table_head" style="background-color: rgba(214, 124, 108, 0.596);">
+								    	<th class="column-1 tab">Imagen</th>
+								    	<th class="column-3 tab">Nombre</th>
+                                        <th class="column-3 tab">Descripción</th>
+                                        <th class="column-3 tab">Estado</th>
+								    	<th class="column-3 tab">Ajustes</th>
+                                      
+								    </tr>
+								</thead>
+                                <tbody>
+									{{#each categorias}}
+								    <tr class="table_row">
+								    	<td class="column-1 tab ">
+								    		<div class="how-itemcart1 ">
+								    			<img src="/images/{{imagen_categoria}}" alt="IMG">
+								    		</div>
+								    	</td>
+								    	<td class="column-3 tab">{{nombre}}</td>
+								    	<td class="column-3 tab p-t-20">{{descripcion}}</td>
+                                        <td class="column-3 tab">
+											{{#if estado}}
+											<span style="color: rgb(52, 170, 164);">Habilitada</span>
+											{{else}}
+											<span style="color: rgb(200, 87, 72);">Deshabilitada</span>
+											{{/if}}
+										</td>
+									
+                                        <td class="column-3 rotbl tab">
+											<a href="/admin/categorias/modificar/{{id}}"><i class="fas fa-cogs p-r-10" style="color: rgb(4, 177, 177); cursor:pointer"><span class="sp">  Modificar categoría</span></i></a>
+
+											{{#if estado}}
+
+										    <i class="fas fa-times" onclick="habi(0,{{id}})" style="color: rgb(209, 102, 92); cursor: pointer"><span class="sp"> Deshabilitar categoría</span></i>
+											{{else}}
+											<i class="fas fa-check " onclick="habi(1,{{id}})" style="color: rgb(4, 177, 177); cursor:pointer"><span class="sp">  Habilitar categoría</span></i>
+											{{/if}}
+										</td>
+								    </tr>
+									{{/each}}
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+<script>
+	//Cambiar estado de categoria
+	const habi = (estado, id) =>{
+		console.log(`estado`, estado);
+		console.log(`id`, id);
+		fetch(`/admin/categorias/${id}/${estado}`,{
+			method: 'put',
+			body: { estado: estado },
+		})
+		.then((response) => response.json())
+		.then(data => message(data))
+		
+	}
+	const message = (dato) =>{
+		if(dato.status){
+			Swal.fire({
+                
+                icon: 'success',
+                title: 'Estado actualizado',
+                showConfirmButton: true,
+            })              
+		}else{
+			Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Algo anduvo mal!',
+                footer: '<a ¿Por qué tuve este eeror?</a>'
+            })
+		}
+	}
+
+
+</script>	

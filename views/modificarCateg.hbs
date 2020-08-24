@@ -1,0 +1,50 @@
+<div class="container imp">
+	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+		<a href="/admin/index" class="stext-109 cl8 hov-cl1 trans-04">
+			Administrador
+			<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a>
+        <a href="/admin/productos" class="stext-109 cl8 hov-cl1 trans-04">
+			Categorías
+			<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a>
+
+        <span class="stext-109 cl4">
+			Modificación de categoría
+		</span>
+    </div>
+</div>
+
+<section class="bg0 p-t-50 p-b-116">
+		<div class="container">
+			<div class="flex-w flex-tr justify-content-center">
+				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+					<form method="POST" action="/admin/categorias/modificar/{{categoria_principal.id}}" enctype="multipart/form-data">
+						<h4 class="mtext-105 cl2 txt-center p-b-30">
+							Modificar categoría
+						</h4>
+
+                        <label for="nombre" class="stext-111 cl2 plh3 p-l-10 lab p-r-30">Nombre</label>
+						<div class="bor8 m-b-20 how-pos4-parent">
+							<input class="stext-111 cl2 plh3 size-116 p-l-20 p-r-30" id="nombre" type="text" name="nombre"  required placeholder="Anterior:    {{categoria_principal.nombre}}">
+						</div>
+						<label for="descripcion" class="stext-111 cl2 plh3 p-l-10 lab p-r-30">Descripción</label>
+                        <div class="bor8 m-b-20 how-pos4-parent">
+							<input class="stext-111 cl2 plh3 size-116 p-l-20 p-r-30" id="descripcion" type="text" name="descripcion" required placeholder="Anterior:    {{categoria_principal.descripcion}}">
+						</div>
+						<label for="imagen" class="stext-111 cl2 plh3 p-l-10 lab p-r-30">Imágen</label>
+						<span class="stext-109 cl4">Imágen anterior: <span class="stext-109 cl4 p-l-10" >{{categoria_principal.imagen}}</span></span>
+                        <div class="bor8 m-b-20 how-pos4-parent">
+							<input class="stext-111 cl2 plh3 size-116 p-t-10 p-l-20 p-r-30" id="imagen" type="file" name="foto" required style="color: teal;">
+						</div>
+                        
+						<button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+							Modificar
+						</button>
+                        
+					</form>
+				</div>
+
+			</div>
+		</div>
+</section>	
